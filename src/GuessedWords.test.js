@@ -23,22 +23,22 @@ test('does not throw warning with expected prop types', () => {
   checkProps(GuessedWords, defaultProps);
 });
 
-describe('if there are no words guessed', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = setup({ guessedWords: [] });
-  });
-
-  test('renders without error', () => {
-    const component = findByTestAttr(wrapper, 'component-guessed-words');
-    expect(component.length).toBe(1);
-  });
-
-  test('renders instructions to guess a word', () => {
-    const instructions = findByTestAttr(wrapper, 'guess-instrs');
-    expect(instructions.text().length).not.toBe(0);
-  });
-});
+// describe('if there are no words guessed', () => {
+//   let wrapper;
+//   beforeEach(() => {
+//     wrapper = setup({ guessedWords: [] });
+//   });
+//
+//   test('renders without error', () => {
+//     const component = findByTestAttr(wrapper, 'component-guessed-words');
+//     expect(component.length).toBe(1);
+//   });
+//
+//   test('renders instructions to guess a word', () => {
+//     const instructions = findByTestAttr(wrapper, 'guess-instrs');
+//     expect(instructions.text().length).not.toBe(0);
+//   });
+// });
 
 describe('if there are words guessed', () => {
   let wrapper;
@@ -58,13 +58,13 @@ describe('if there are words guessed', () => {
     expect(component.length).toBe(1);
   });
 
-  test('renders "guessed words" section', () => {
-    const guessedWordsNode = findByTestAttr(wrapper, 'guessed-words');
+  test('renders "guessed list" section', () => {
+    const guessedWordsNode = findByTestAttr(wrapper, 'guessed-list');
     expect(guessedWordsNode.length).toBe(1);
   });
 
   test('displays correct number of guessed words', () => {
-    const guessedWordsNode = findByTestAttr(wrapper, 'guessed-words');
-    expect(guessedWordsNode.length).toBe(guessedWords.length);
+    const guessedWordNode = findByTestAttr(wrapper, 'guessed-word');
+    expect(guessedWordNode.length).toBe(guessedWords.length);
   });
 });
