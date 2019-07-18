@@ -14,20 +14,29 @@ const setup = (initialState={}) => {
   const store = storeFactory(initialState);
   //.dive().dive(); - for dive and see Input component itself, but not the redux he is connected with as a HOC
   const wrapper = shallow(<Input store={store}/>).dive().dive();
-  console.log(wrapper.debug());
+  //console.log(wrapper.debug());
+  return wrapper;
 }
-setup();
 
 describe('render', () => {
   describe('word has not been guessed', () => {
-    test('renders without error', () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState);
+    });
 
+    test('renders without error', () => {
+      const component = findByTestAttr(wrapper, 'component-input');
+      expect(component.length).toBe(1);
     });
     test('renders input box', () => {
-
+      const component = findByTestAttr(wrapper, 'input-box');
+      expect(component.length).toBe(1);
     });
     test('renders submit button', () => {
-
+      const component = findByTestAttr(wrapper, 'submit-btn');
+      expect(component.length).toBe(1);
     });
   });
 
