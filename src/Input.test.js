@@ -48,15 +48,15 @@ describe('render', () => {
     });
     test('renders without error', () => {
       const component = findByTestAttr(wrapper, 'component-input');
-      expect(component.length).toBe(0);
+      expect(component.length).toBe(1);
     });
     test('does not render input box', () => {
       const input = findByTestAttr(wrapper, 'input-box');
-      expect(input.length).toBe(1);
+      expect(input.length).toBe(0);
     });
     test('does not render submit button', () => {
       const btn = findByTestAttr(wrapper, 'submit-btn');
-      expect(btn.length).toBe(1);
+      expect(btn.length).toBe(0);
     });
   });
 });
